@@ -1,18 +1,18 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 @TeleOp(name="Shooter Only Control", group="Linear Opmode")
 public class shooter extends LinearOpMode {
 
-    private DcMotor shooter = null;
+    private DcMotorEx shooter = null;
 
     @Override
     public void runOpMode() {
         // Initialize the shooter motor from the hardware map
-        shooter = hardwareMap.get(DcMotor.class, "shooter");
+        shooter = hardwareMap.get(DcMotorEx.class, "shooter");
 
         // Optional: Set motor direction if it spins the wrong way
         // shooter.setDirection(DcMotor.Direction.FORWARD);

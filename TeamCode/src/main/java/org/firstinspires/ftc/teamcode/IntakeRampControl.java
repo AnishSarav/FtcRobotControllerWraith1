@@ -1,19 +1,19 @@
 package org.firstinspires.ftc.teamcode;
-import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 @TeleOp(name="Intake and Ramp Control", group="Linear Opmode")
 public class IntakeRampControl extends LinearOpMode {
 
-    private DcMotor intake = null;
-    private DcMotor ramp = null;
+    private DcMotorEx intake = null;
+    private DcMotorEx ramp = null;
 
     @Override
     public void runOpMode() {
         // Initialize the hardware variables from the hardware map
-        intake = hardwareMap.get(DcMotor.class, "intake");
-        ramp = hardwareMap.get(DcMotor.class, "ramp");
+        intake = hardwareMap.get(DcMotorEx.class, "intake");
+        ramp = hardwareMap.get(DcMotorEx.class, "ramp");
 
         // Optional: Set motor directions if they spin the wrong way
         // intake.setDirection(DcMotor.Direction.FORWARD);
