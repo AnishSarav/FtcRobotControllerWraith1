@@ -42,14 +42,14 @@ public class Teleop extends LinearOpMode {
 
         while (opModeIsActive()) {
             // --- 1. MECANUM DRIVE LOGIC ---
-            double drive  = gamepad1.left_stick_y;
+            double drive  =  -gamepad1.left_stick_y;
             double strafe =  gamepad1.left_stick_x;
             double turn   =  gamepad1.right_stick_x;
 
             double fl = drive + strafe + turn;
             double fr = drive - strafe - turn;
-            double bl = drive - strafe + turn;
-            double br = drive + strafe - turn;
+            double bl = -drive - strafe + turn;
+            double br = -drive + strafe - turn;
 
             double max = Math.max(1.0, Math.max(
                     Math.max(Math.abs(fl), Math.abs(fr)),
@@ -60,7 +60,7 @@ public class Teleop extends LinearOpMode {
             backLeft.setPower(bl / max);
             backRight.setPower(br / max);
 
-            // --- 2. INTAKE & RAMP LOGIC (Using A and B buttons) ---
+//             --- 2. INTAKE & RAMP LOGIC (Using A and B buttons) ---
             if (gamepad1.a) {
                 intake.setPower(1.0);
                 ramp.setPower(1.0);
@@ -78,8 +78,8 @@ public class Teleop extends LinearOpMode {
             } else {
                 shooter.setPower(0.0);
             }
-
-            // --- TELEMETRY ---
+//
+//            // --- TELEMETRY ---
             telemetry.addData("Drive Power", "fl: %.2f, fr: %.2f", fl/max, fr/max);
             telemetry.addData("Intake Power", intake.getPower());
             telemetry.addData("Shooter Power", shooter.getPower());
