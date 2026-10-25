@@ -41,7 +41,7 @@ public class Teleop extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive()) {
-            // --- 1. MECANUM DRIVE LOGIC ---
+            // --- 1. MECANUM DRIVE LOGIC ---Ω
             double drive  =  -gamepad1.left_stick_y;
             double strafe =  gamepad1.left_stick_x;
             double turn   =  gamepad1.right_stick_x;
@@ -62,11 +62,11 @@ public class Teleop extends LinearOpMode {
 
 //             --- 2. INTAKE & RAMP LOGIC (Using A and B buttons) ---
             if (gamepad1.a) {
-                intake.setPower(1.0);
-                ramp.setPower(1.0);
+                intake.setPower(0.5);
+                ramp.setPower(0.5);
             } else if (gamepad1.b) {
-                intake.setPower(-1.0);
-                ramp.setPower(-1.0);
+                intake.setPower(-0.5);
+                ramp.setPower(-0.5);
             } else {
                 intake.setPower(0.0);
                 ramp.setPower(0.0);
@@ -74,7 +74,7 @@ public class Teleop extends LinearOpMode {
 
             // --- 3. SHOOTER LOGIC (Using X button) ---
             if (gamepad1.x) {
-                shooter.setPower(1.0);
+                shooter.setPower(0.5);
             } else {
                 shooter.setPower(0.0);
             }
