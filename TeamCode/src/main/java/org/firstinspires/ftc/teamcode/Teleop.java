@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 @TeleOp(name = "Wraith Master TeleOp")
 public class Teleop extends LinearOpMode {
@@ -35,14 +36,16 @@ public class Teleop extends LinearOpMode {
         frontLeft.setDirection(DcMotorEx.Direction.REVERSE);
         backLeft.setDirection(DcMotorEx.Direction.REVERSE);
 
-        telemetry.addData("Status", "Initialized. Ready to rumble!");
+        telemetry.addData("Motor FL Power", frontLeft.getVelocity());
+        telemetry.addData("Motor BL Power", backLeft.getVelocity());
+
         telemetry.update();
 
         waitForStart();
 
         while (opModeIsActive()) {
             // --- 1. MECANUM DRIVE LOGIC ---Ω
-            double drive  =  -gamepad1.left_stick_y;
+            double drive  =  gamepad1.left_stick_y;
             double strafe =  gamepad1.left_stick_x;
             double turn   =  gamepad1.right_stick_x;
 
@@ -62,11 +65,10 @@ public class Teleop extends LinearOpMode {
 
 //             --- 2. INTAKE & RAMP LOGIC (Using A and B buttons) ---
             if (gamepad1.a) {
-                intake.setPower(0.5);
-                ramp.setPower(0.5);
+                shooter.setPower(1.0);
+                ramp.setPower(1.0);
             } else if (gamepad1.b) {
-                intake.setPower(-0.5);
-                ramp.setPower(-0.5);
+                intake.setPower(-1.0);
             } else {
                 intake.setPower(0.0);
                 ramp.setPower(0.0);
@@ -74,7 +76,7 @@ public class Teleop extends LinearOpMode {
 
             // --- 3. SHOOTER LOGIC (Using X button) ---
             if (gamepad1.x) {
-                shooter.setPower(0.5);
+                shooter.setPower(1.0);
             } else {
                 shooter.setPower(0.0);
             }
