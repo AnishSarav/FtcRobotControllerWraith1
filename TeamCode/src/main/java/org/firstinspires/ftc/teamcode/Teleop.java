@@ -64,12 +64,16 @@ public class Teleop extends LinearOpMode {
             backRight.setPower(br / max);
 
 //             --- 2. INTAKE & RAMP LOGIC (Using A and B buttons) ---
-            if (gamepad1.a) {
-                shooter.setPower(1.0);
-                ramp.setPower(1.0);
-            } else if (gamepad1.b) {
+            if (gamepad1.a)
+            {
+                ramp.setPower(0.0);
+            }
+            else if (gamepad1.b)
+            {
                 intake.setPower(-1.0);
-            } else {
+            }
+            else
+            {
                 intake.setPower(0.0);
                 ramp.setPower(0.0);
             }
@@ -77,8 +81,10 @@ public class Teleop extends LinearOpMode {
             // --- 3. SHOOTER LOGIC (Using X button) ---
             if (gamepad1.x) {
                 shooter.setPower(1.0);
+                ramp.setPower(1.0);
             } else {
                 shooter.setPower(0.0);
+                ramp.setPower(0.0);
             }
 //
 //            // --- TELEMETRY ---
